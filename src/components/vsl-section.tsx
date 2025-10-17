@@ -25,19 +25,12 @@ export default function VSLSection() {
         {/* This would be replaced with an actual video player in production */}
         <div
           className="flex h-full w-full items-center justify-center"
-          style={{ backgroundColor: "#273849" }}
+          style={{ backgroundColor: "#303030" }}
         >
           <div className="text-center text-white">
             <motion.div
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
-              animate={{
-                boxShadow: [
-                  "0 0 0 0 rgba(152, 111, 49, 0.7)",
-                  "0 0 0 10px rgba(152, 111, 49, 0.4)",
-                  "0 0 0 20px rgba(152, 111, 49, 0)",
-                ],
-              }}
               transition={{
                 boxShadow: { repeat: Infinity, duration: 2 },
               }}
@@ -45,7 +38,7 @@ export default function VSLSection() {
               <Button
                 variant="outline"
                 size="icon"
-                className="h-20 w-20 rounded-full border-2 text-white hover:scale-110 transition-transform"
+                className="cursor-pointer h-20 w-20 rounded-full border-2 text-white hover:scale-110 transition-transform"
                 style={{
                   backgroundColor: "#986f31",
                   borderColor: "#d4d3ce",
@@ -80,7 +73,7 @@ export default function VSLSection() {
           }}
         >
           <h2
-            className="text-xl font-bold md:text-2xl"
+            className="text-xl font-bold md:text-2xl text-center"
             style={{ color: "#d4d3ce" }}
           >
             🎯 Como Eu Construí Um Negócio Digital Lucrativo Partindo do Zero

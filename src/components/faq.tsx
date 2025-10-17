@@ -46,7 +46,7 @@ export default function FAQ() {
       transition={{ duration: 0.6 }}
       className="mx-auto max-w-3xl divide-y rounded-lg border-2 shadow-xl"
       style={{
-        backgroundColor: "#273849",
+        backgroundColor: "#303030",
         borderColor: "#986f31",
       }}
     >

@@ -11,7 +11,7 @@ function Card({ className, ...props }: React.ComponentProps<"div">) {
         className
       )}
       style={{
-        backgroundColor: "#273849",
+        backgroundColor: "#303030",
         color: "#d4d3ce",
         borderColor: "#986f31",
       }}

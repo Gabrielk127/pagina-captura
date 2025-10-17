@@ -56,7 +56,7 @@ export default function BenefitsList() {
           }}
           className="flex items-start gap-3 rounded-lg border-2 p-4 shadow-lg"
           style={{
-            backgroundColor: "#273849",
+            backgroundColor: "#303030",
             borderColor: "#986f31",
           }}
         >

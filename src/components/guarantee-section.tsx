@@ -11,7 +11,7 @@ export default function GuaranteeSection() {
       transition={{ duration: 0.6 }}
       className="my-12 rounded-lg border-2 p-8 shadow-2xl"
       style={{
-        backgroundColor: "#273849",
+        backgroundColor: "#303030",
         borderColor: "#986f31",
         boxShadow: "0 25px 50px -12px rgba(152, 111, 49, 0.4)",
       }}
