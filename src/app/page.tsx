@@ -142,8 +142,9 @@ export default function PatrimonialGrowthCalculator() {
         <motion.div variants={itemVariants} className="mb-12">
           <VslVideo
             video="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+            playing={true}
             onTimeReached={handleVideoTimeReached}
-            requiredTimeInSeconds={60} // Altere para o tempo desejado em segundos
+            requiredTimeInSeconds={60}
           />
         </motion.div>
         {/* Benefits Section */}
