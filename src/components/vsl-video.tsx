@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import ReactPlayer from "react-player";
 
 interface YoutubeVideoProps {
@@ -21,7 +21,6 @@ const VslVideo = ({
   const [formUnlocked, setFormUnlocked] = useState(false);
   const [timerStarted, setTimerStarted] = useState(false);
   const [isPlaying, setIsPlaying] = useState(playing);
-  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setIsClient(true);
@@ -64,6 +63,16 @@ const VslVideo = ({
             style={{ borderRadius: "15px" }}
             onPlay={() => setIsPlaying(true)}
             onPause={() => setIsPlaying(false)}
+            config={{
+              youtube: {
+                playerVars: {
+                  rel: 0, // Desabilita vídeos relacionados
+                  modestbranding: 1, // Remove logo do YouTube
+                  showinfo: 0, // Remove informações do vídeo
+                  iv_load_policy: 3, // Desabilita anotações
+                }
+              }
+            }}
           />
           
           {/* Contador regressivo */}

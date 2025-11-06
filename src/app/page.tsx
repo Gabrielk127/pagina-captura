@@ -92,8 +92,8 @@ export default function PatrimonialGrowthCalculator() {
             transition={{ delay: 0.6, duration: 0.8 }}
             className="mb-6 text-lg md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-primary via-foreground to-primary bg-clip-text text-transparent"
           >
-            Descubra quanto seu patrimônio pode crescer com a estratégia
-            inteligente de consórcio
+            Descubra quanto seu patrimônio pode crescer com uma estratégia
+            inteligente
           </motion.h2>
 
           {/* Subheadline */}
@@ -131,7 +131,7 @@ export default function PatrimonialGrowthCalculator() {
               {[
                 "Calculadora de Crescimento Patrimonial exclusiva e personalizada.",
                 "Planilha inteligente para simular seus ganhos mês a mês.",
-                "Projeção real de valorização patrimonial com o uso do consórcio.",
+                "Projeção real de valorização patrimonial.",
                 "BÔNUS: 45 minutos de consultoria gratuita para tirar suas dúvidas.",
               ].map((benefit, index) => (
                 <motion.div
@@ -204,7 +204,7 @@ export default function PatrimonialGrowthCalculator() {
                     }}
                   >
                     <span className="block md:inline text-lg md:text-xl lg:text-2xl leading-tight">
-                      🚀 COMPRAR AGORA - GARANTIR MINHA CALCULADORA
+                      COMPRAR AGORA
                     </span>
                   </Button>
                 </motion.div>
@@ -250,7 +250,7 @@ export default function PatrimonialGrowthCalculator() {
                   <strong className="text-primary">OFERTA EXCLUSIVA:</strong> Além da calculadora completa, você receberá 45 minutos de consultoria gratuita com nossos especialistas para entender como aplicar as estratégias no seu caso específico.
                 </p>
                 <p className="text-base text-foreground">
-                  Essa é a mesma ferramenta que usamos para orientar investidores que já construíram patrimônio sólido com o consórcio. Garanta a sua agora e comece a planejar seu crescimento financeiro com suporte profissional.
+                  Essa é a mesma ferramenta que usamos para orientar investidores que já construíram patrimônio sólido. Garanta a sua agora e comece a planejar seu crescimento financeiro com suporte profissional.
                 </p>
               </div>
             </motion.div>
