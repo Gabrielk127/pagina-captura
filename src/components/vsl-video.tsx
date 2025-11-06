@@ -20,6 +20,7 @@ const VslVideo = ({
   const [timeLeft, setTimeLeft] = useState(requiredTimeInSeconds);
   const [formUnlocked, setFormUnlocked] = useState(false);
   const [timerStarted, setTimerStarted] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(playing);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -27,9 +28,9 @@ const VslVideo = ({
     setTimerStarted(true);
   }, []);
 
-  // Timer para liberar o formulário
+  // Timer para liberar o formulário - só conta quando o vídeo está tocando
   useEffect(() => {
-    if (!timerStarted || timeLeft <= 0) {
+    if (!timerStarted || timeLeft <= 0 || !isPlaying) {
       if (timeLeft <= 0) {
         setFormUnlocked(true);
         onTimeReached?.(true);
@@ -42,7 +43,7 @@ const VslVideo = ({
     }, 1000);
 
     return () => clearTimeout(timer);
-  }, [timeLeft, onTimeReached, timerStarted]);
+  }, [timeLeft, onTimeReached, timerStarted, isPlaying]);
 
   if (!isClient) {
     return null;
@@ -54,19 +55,21 @@ const VslVideo = ({
         <div className="relative aspect-video rounded-xl overflow-hidden">
           <ReactPlayer
             url={video}
-            playing={playing}
+            playing={isPlaying}
             volume={1}
             muted={true}
             controls={true}
             width="100%"
             height="100%"
             style={{ borderRadius: "15px" }}
+            onPlay={() => setIsPlaying(true)}
+            onPause={() => setIsPlaying(false)}
           />
           
           {/* Contador regressivo */}
           {!formUnlocked && (
             <div className="absolute top-4 right-4 bg-black bg-opacity-80 text-white px-4 py-2 rounded-full text-sm font-bold">
-              ⏱️ {timeLeft}s
+              ⏱️ {timeLeft}s {!isPlaying && "⏸️"}
             </div>
           )}
         </div>
@@ -98,7 +101,7 @@ const VslVideo = ({
               className="text-center text-lg font-semibold"
               style={{ color: "#986f31" }}
             >
-              ⏱️ Formulário será liberado em {timeLeft} segundos
+              ⏱️ {isPlaying ? `Botão será liberado em ${timeLeft} segundos` : `⏸️ Vídeo pausado - ${timeLeft} segundos restantes`}
             </p>
           </div>
         )}
@@ -108,7 +111,7 @@ const VslVideo = ({
           <div className="mt-4 text-center">
             <div className="bg-green-500 text-white rounded-lg px-6 py-3 mx-auto inline-block">
               <p className="font-bold text-lg">
-                🎉 Formulário liberado! Role para baixo
+                🎉 Botão liberado! Role para baixo
               </p>
             </div>
           </div>
