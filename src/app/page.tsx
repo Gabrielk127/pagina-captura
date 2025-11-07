@@ -38,7 +38,10 @@ export default function PatrimonialGrowthCalculator() {
   };
 
   const handleBuyClick = () => {
-    window.open("https://pay.hotmart.com/D102466966L?bid=1762361748801", "_blank");
+    window.open(
+      "https://pay.hotmart.com/D102466966L?bid=1762361748801",
+      "_blank"
+    );
   };
 
   useEffect(() => {
@@ -90,11 +93,12 @@ export default function PatrimonialGrowthCalculator() {
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.8 }}
-            className="mb-6 text-base md:text-xl lg:text-2xl font-normal text-white font-tt"
+            className="mb-6 text-base md:text-xl lg:text-2xl font-normal font-tt text-white"
           >
-            "Aqui, o foco é ir além da teoria!  É ajudar VOCÊ a aplicar o conhecimento de forma prática, estratégica e alinhada ao seu perfil de <strong>INVESTIDOR</strong>."
+            "Aqui, o foco é ir além da teoria! É ajudar VOCÊ a aplicar o
+            conhecimento de forma prática, estratégica e alinhada ao seu perfil
+            de <strong>INVESTIDOR</strong>."
           </motion.h2>
-
         </motion.div>
         {/* VSL Section */}
         <motion.div variants={itemVariants} className="mb-12">
@@ -238,10 +242,16 @@ export default function PatrimonialGrowthCalculator() {
             >
               <div className="p-8 rounded-lg border-2 border-primary bg-card shadow-2xl">
                 <p className="text-lg leading-relaxed text-foreground mb-4">
-                  <strong className="text-primary">OFERTA EXCLUSIVA:</strong> Além da calculadora completa, você receberá 45 minutos de consultoria gratuita com nossos especialistas para entender como aplicar as estratégias no seu caso específico.
+                  <strong className="text-primary">OFERTA EXCLUSIVA:</strong>{" "}
+                  Além da calculadora completa, você receberá 45 minutos de
+                  consultoria gratuita com nossos especialistas para entender
+                  como aplicar as estratégias no seu caso específico.
                 </p>
                 <p className="text-base text-foreground">
-                  Essa é a mesma ferramenta que usamos para orientar investidores que já construíram patrimônio sólido. Garanta a sua agora e comece a planejar seu crescimento financeiro com suporte profissional.
+                  Essa é a mesma ferramenta que usamos para orientar
+                  investidores que já construíram patrimônio sólido. Garanta a
+                  sua agora e comece a planejar seu crescimento financeiro com
+                  suporte profissional.
                 </p>
               </div>
             </motion.div>
