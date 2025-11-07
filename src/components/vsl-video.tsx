@@ -12,7 +12,6 @@ interface YoutubeVideoProps {
 
 const VslVideo = ({
   video,
-  playing = true,
   onTimeReached,
   requiredTimeInSeconds = 60,
 }: YoutubeVideoProps) => {
@@ -20,11 +19,10 @@ const VslVideo = ({
   const [timeLeft, setTimeLeft] = useState(requiredTimeInSeconds);
   const [formUnlocked, setFormUnlocked] = useState(false);
   const [timerStarted, setTimerStarted] = useState(false);
-  const [isPlaying, setIsPlaying] = useState(playing);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   useEffect(() => {
     setIsClient(true);
-    setTimerStarted(true);
   }, []);
 
   // Timer para liberar o formulário - só conta quando o vídeo está tocando
@@ -61,7 +59,12 @@ const VslVideo = ({
             width="100%"
             height="100%"
             style={{ borderRadius: "15px" }}
-            onPlay={() => setIsPlaying(true)}
+            onPlay={() => {
+              setIsPlaying(true);
+              if (!timerStarted) {
+                setTimerStarted(true);
+              }
+            }}
             onPause={() => setIsPlaying(false)}
             config={{
               youtube: {
@@ -76,7 +79,7 @@ const VslVideo = ({
           />
 
           {/* Contador regressivo */}
-          {!formUnlocked && (
+          {!formUnlocked && timerStarted && (
             <div className="absolute top-4 right-4 bg-black bg-opacity-80 text-white px-4 py-2 rounded-full text-sm font-bold">
               ⏱️ {timeLeft}s {!isPlaying && "⏸️"}
             </div>
@@ -84,7 +87,7 @@ const VslVideo = ({
         </div>
 
         {/* Barra de progresso */}
-        {!formUnlocked && (
+        {!formUnlocked && timerStarted && (
           <div className="mt-4">
             <div className="bg-gray-700 rounded-full h-4 mb-3">
               <div
@@ -116,6 +119,15 @@ const VslVideo = ({
               {isPlaying
                 ? `Botão será liberado em ${timeLeft} segundos`
                 : `⏸️ Vídeo pausado - ${timeLeft} segundos restantes`}
+            </p>
+          </div>
+        )}
+
+        {/* Mensagem para iniciar o vídeo */}
+        {!timerStarted && (
+          <div className="mt-4 text-center">
+            <p className="text-lg font-semibold" style={{ color: "#986f31" }}>
+              ▶️ Clique em play para começar
             </p>
           </div>
         )}
