@@ -118,11 +118,19 @@ const VslVideo = ({
         {/* Mensagem de sucesso */}
         {formUnlocked && (
           <div className="mt-4 text-center">
-            <div className="bg-green-500 text-white rounded-lg px-6 py-3 mx-auto inline-block">
+            <button
+              onClick={() => {
+                const buyButton = document.querySelector('[data-buy-button]');
+                if (buyButton) {
+                  buyButton.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+              }}
+              className="bg-[#986f31] text-white rounded-lg px-6 py-3 mx-auto inline-block hover:bg-[#b8853d] transition-colors cursor-pointer"
+            >
               <p className="font-bold text-lg">
-                🎉 Botão liberado! Role para baixo
+                Garanta já o Simulador de Investimentos
               </p>
-            </div>
+            </button>
           </div>
         )}
       </div>

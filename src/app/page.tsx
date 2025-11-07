@@ -73,15 +73,15 @@ export default function PatrimonialGrowthCalculator() {
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 1, ease: "easeOut" }}
-            className="mb-4 text-2xl font-extrabold tracking-tight md:text-4xl lg:text-5xl text-foreground"
+            className="mb-4 text-2xl font-normal tracking-tight md:text-4xl lg:text-5xl text-foreground font-playfair"
           >
             <motion.span
               initial={{ x: -100, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ delay: 0.3, duration: 0.8 }}
-              className="block mb-2"
+              className="block mb-2 underline decoration-white decoration-2 font-light underline-offset-4"
             >
-              AX Mercado Real apresenta:
+              AX MERCADO REAL
             </motion.span>
           </motion.h1>
 
@@ -90,21 +90,11 @@ export default function PatrimonialGrowthCalculator() {
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.8 }}
-            className="mb-6 text-lg md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-primary via-foreground to-primary bg-clip-text text-transparent"
+            className="mb-6 text-lg md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-primary via-foreground to-primary bg-clip-text text-transparent font-tt "
           >
-            Descubra quanto seu patrimônio pode crescer com uma estratégia
-            inteligente
+            Aqui, o foco é ir além da teoria!  É ajudar VOCÊ a aplicar o conhecimento de forma prática, estratégica e alinhada ao seu perfil de <strong>INVESTIDOR</strong>.
           </motion.h2>
 
-          {/* Subheadline */}
-          <motion.p
-            initial={{ y: 50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 1, duration: 0.8 }}
-            className="hidden md:flex mx-auto mt-6 max-w-3xl text-xl text-foreground"
-          >
-            Descubra quanto seu patrimônio pode crescer com  estratégia e inteligência, venha com a  AX Mercado Real.
-          </motion.p>
         </motion.div>
         {/* VSL Section */}
         <motion.div variants={itemVariants} className="mb-12">
@@ -123,15 +113,15 @@ export default function PatrimonialGrowthCalculator() {
             transition={{ duration: 0.6 }}
             className="mb-6 text-center text-xl md:text-2xl font-bold text-primary"
           >
-            Ao adquirir a Calculadora, você receberá:
+            Ao adquirir o simulador você receberá:
           </motion.h3>
 
           <div className="mx-auto max-w-4xl">
             <div className="grid gap-6 md:grid-cols-2">
               {[
-                "Calculadora de Crescimento Patrimonial exclusiva e personalizada.",
-                "Planilha inteligente para simular seus ganhos mês a mês.",
+                "Simulador  de Investimentos Patrimonial exclusivo e personalizado.",
                 "Projeção real de valorização patrimonial.",
+                "Planilha inteligente para simular seus ganhos mês a mês.",
                 "BÔNUS: 45 minutos de consultoria gratuita para tirar suas dúvidas.",
               ].map((benefit, index) => (
                 <motion.div
@@ -159,7 +149,7 @@ export default function PatrimonialGrowthCalculator() {
             className="mb-8 text-xl font-semibold text-primary"
           >
             {showButton
-              ? "Garanta agora sua Calculadora de Crescimento Patrimonial!"
+              ? "Lote promocional, estou liberando apenas 25 simuladores de investimento"
               : "Continue assistindo o vídeo para liberar o botão de compra!"}
           </motion.p>
         </motion.section>
@@ -196,6 +186,7 @@ export default function PatrimonialGrowthCalculator() {
                   <Button
                     onClick={handleBuyClick}
                     size="lg"
+                    data-buy-button
                     className="cursor-pointer w-full py-6 text-base md:text-lg lg:text-2xl font-bold border-2 border-green-600 bg-green-500 text-white hover:bg-green-600 hover:scale-105 transition-all whitespace-normal break-words"
                     style={{
                       lineHeight: 1.2,
@@ -204,7 +195,7 @@ export default function PatrimonialGrowthCalculator() {
                     }}
                   >
                     <span className="block md:inline text-lg md:text-xl lg:text-2xl leading-tight">
-                      COMPRAR AGORA
+                      Garanta já o seu, por apenas R$47,50
                     </span>
                   </Button>
                 </motion.div>

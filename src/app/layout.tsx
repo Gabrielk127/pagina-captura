@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Inter } from "next/font/google";
+import { Playfair_Display } from "next/font/google";
 import "./globals.css";
 
 const playfairDisplay = Playfair_Display({
@@ -8,11 +8,6 @@ const playfairDisplay = Playfair_Display({
   weight: ["400", "500", "600", "700", "800", "900"],
 });
 
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-});
 
 export const metadata: Metadata = {
   title: "AX Mercado Real",
@@ -32,8 +27,8 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet" />
       </head>
       <body
-        className={`${playfairDisplay.variable} ${inter.variable} antialiased dark`}
-        style={{ backgroundColor: "#303030", color: "#d4d3ce" }}
+        className={`${playfairDisplay.variable} antialiased dark`}
+        style={{ backgroundColor: "#273849", color: "#d4d3ce" }}
       >
         {children}
       </body>
