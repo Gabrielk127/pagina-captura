@@ -10,11 +10,11 @@ interface YoutubeVideoProps {
   requiredTimeInSeconds?: number;
 }
 
-const VslVideo = ({ 
-  video, 
-  playing = true, 
+const VslVideo = ({
+  video,
+  playing = true,
   onTimeReached,
-  requiredTimeInSeconds = 60 
+  requiredTimeInSeconds = 60,
 }: YoutubeVideoProps) => {
   const [isClient, setIsClient] = useState(false);
   const [timeLeft, setTimeLeft] = useState(requiredTimeInSeconds);
@@ -56,7 +56,7 @@ const VslVideo = ({
             url={video}
             playing={isPlaying}
             volume={1}
-            muted={true}
+            muted={false}
             controls={true}
             width="100%"
             height="100%"
@@ -70,11 +70,11 @@ const VslVideo = ({
                   modestbranding: 1, // Remove logo do YouTube
                   showinfo: 0, // Remove informações do vídeo
                   iv_load_policy: 3, // Desabilita anotações
-                }
-              }
+                },
+              },
             }}
           />
-          
+
           {/* Contador regressivo */}
           {!formUnlocked && (
             <div className="absolute top-4 right-4 bg-black bg-opacity-80 text-white px-4 py-2 rounded-full text-sm font-bold">
@@ -92,7 +92,8 @@ const VslVideo = ({
                 style={{
                   backgroundColor: "#22c55e",
                   width: `${
-                    ((requiredTimeInSeconds - timeLeft) / requiredTimeInSeconds) *
+                    ((requiredTimeInSeconds - timeLeft) /
+                      requiredTimeInSeconds) *
                     100
                   }%`,
                 }}
@@ -101,7 +102,8 @@ const VslVideo = ({
                   100 >
                   15 &&
                   `${Math.round(
-                    ((requiredTimeInSeconds - timeLeft) / requiredTimeInSeconds) *
+                    ((requiredTimeInSeconds - timeLeft) /
+                      requiredTimeInSeconds) *
                       100
                   )}%`}
               </div>
@@ -110,7 +112,10 @@ const VslVideo = ({
               className="text-center text-lg font-semibold"
               style={{ color: "#986f31" }}
             >
-              ⏱️ {isPlaying ? `Botão será liberado em ${timeLeft} segundos` : `⏸️ Vídeo pausado - ${timeLeft} segundos restantes`}
+              ⏱️{" "}
+              {isPlaying
+                ? `Botão será liberado em ${timeLeft} segundos`
+                : `⏸️ Vídeo pausado - ${timeLeft} segundos restantes`}
             </p>
           </div>
         )}
@@ -120,9 +125,12 @@ const VslVideo = ({
           <div className="mt-4 text-center">
             <button
               onClick={() => {
-                const buyButton = document.querySelector('[data-buy-button]');
+                const buyButton = document.querySelector("[data-buy-button]");
                 if (buyButton) {
-                  buyButton.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                  buyButton.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center",
+                  });
                 }
               }}
               className="bg-[#986f31] text-white rounded-lg px-6 py-3 mx-auto inline-block hover:bg-[#b8853d] transition-colors cursor-pointer"
