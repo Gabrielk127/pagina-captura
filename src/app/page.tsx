@@ -90,7 +90,7 @@ export default function PatrimonialGrowthCalculator() {
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.8 }}
-            className="mb-6 text-lg md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-primary via-foreground to-primary bg-clip-text text-transparent font-tt "
+            className="mb-6 text-lg md:text-3xl lg:text-4xl font-bold text-primary font-tt"
           >
             Aqui, o foco é ir além da teoria!  É ajudar VOCÊ a aplicar o conhecimento de forma prática, estratégica e alinhada ao seu perfil de <strong>INVESTIDOR</strong>.
           </motion.h2>
