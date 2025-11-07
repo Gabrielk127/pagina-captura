@@ -95,9 +95,9 @@ export default function PatrimonialGrowthCalculator() {
             transition={{ delay: 0.6, duration: 0.8 }}
             className="mb-6 text-base md:text-xl lg:text-2xl font-normal font-tt text-white"
           >
-            "Aqui, o foco é ir além da teoria! É ajudar VOCÊ a aplicar o
+            &ldquo;Aqui, o foco é ir além da teoria! É ajudar VOCÊ a aplicar o
             conhecimento de forma prática, estratégica e alinhada ao seu perfil
-            de <strong>INVESTIDOR</strong>."
+            de <strong>INVESTIDOR</strong>.&rdquo;
           </motion.h2>
         </motion.div>
         {/* VSL Section */}
