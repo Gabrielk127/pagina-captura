@@ -148,7 +148,7 @@ const VslVideo = ({
               className="bg-[#986f31] text-white rounded-lg px-6 py-3 mx-auto inline-block hover:bg-[#b8853d] transition-colors cursor-pointer"
             >
               <p className="font-bold text-lg">
-                Garanta já o Simulador de Investimentos
+                Garanta Já o Simulador de Investimentos
               </p>
             </button>
           </div>
