@@ -61,6 +61,20 @@ export default function PatrimonialGrowthCalculator() {
 
   return (
     <div className="min-h-screen bg-background">
+      {/* Logo no canto superior esquerdo */}
+      <motion.div
+        initial={{ x: -50, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        className="absolute top-4 left-4 md:top-6 md:left-6 lg:top-8 lg:left-8 z-10"
+      >
+        <img
+          src="/logo.png"
+          alt="AX Mercado Real Logo"
+          className="h-12 md:h-16 lg:h-20 w-auto"
+        />
+      </motion.div>
+
       <motion.main
         variants={containerVariants}
         initial="hidden"
@@ -95,9 +109,8 @@ export default function PatrimonialGrowthCalculator() {
             transition={{ delay: 0.6, duration: 0.8 }}
             className="mb-6 text-base md:text-xl lg:text-2xl font-normal font-tt text-white"
           >
-            &ldquo;Aqui, o foco é ir além da teoria! É ajudar VOCÊ a aplicar o
-            conhecimento de forma prática, estratégica e alinhada ao seu perfil
-            de <strong>INVESTIDOR</strong>.&rdquo;
+            Assista o vídeo e aprenda a interpretar seus resultados e descubra
+            como acelerar o caminho para a sua aposentadoria dos sonhos.
           </motion.h2>
         </motion.div>
         {/* VSL Section */}
@@ -125,8 +138,8 @@ export default function PatrimonialGrowthCalculator() {
               {[
                 "Simulador  de Investimentos Patrimonial exclusivo e personalizado.",
                 "Projeção real de valorização patrimonial.",
-                "Planilha inteligente para simular seus ganhos mês a mês.",
-                "BÔNUS: 45 minutos de consultoria gratuita para tirar suas dúvidas.",
+                "Planilha inteligente para construir os seus ativos patrimoniais",
+                "45 minutos de consultoria gratuita para tirar suas dúvidas.",
               ].map((benefit, index) => (
                 <motion.div
                   key={index}
