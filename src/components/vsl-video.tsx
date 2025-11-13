@@ -123,6 +123,14 @@ const VslVideo = ({
           </div>
         )}
 
+        {/* CTA Section - Sempre visível */}
+        <div className="my-6 text-center">
+          <p className="text-xl font-semibold" style={{ color: "#986f31" }}>
+            Lote promocional, estou liberando apenas <strong>25</strong>{" "}
+            simuladores de investimento por apenas R$47,50
+          </p>
+        </div>
+
         {/* Mensagem para iniciar o vídeo */}
         {!timerStarted && (
           <div className="mt-4 text-center">
@@ -145,7 +153,7 @@ const VslVideo = ({
                   });
                 }
               }}
-              className="bg-[#986f31] text-white rounded-lg px-6 py-3 mx-auto inline-block hover:bg-[#b8853d] transition-colors cursor-pointer"
+              className="bg-green-600 text-white rounded-lg px-6 py-3 mx-auto inline-block hover:bg-green-700  cursor-pointer transition-all duration-300 ease-in-out transform hover:scale-105"
             >
               <p className="font-bold text-lg">
                 Garanta Já o Simulador de Investimentos

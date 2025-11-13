@@ -119,7 +119,7 @@ export default function PatrimonialGrowthCalculator() {
             video="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             playing={true}
             onTimeReached={handleVideoTimeReached}
-            requiredTimeInSeconds={60}
+            requiredTimeInSeconds={1}
           />
         </motion.div>
         {/* Benefits Section */}
@@ -158,18 +158,6 @@ export default function PatrimonialGrowthCalculator() {
           </div>
         </motion.section>
         {/* CTA Section - Aparece sempre */}
-        <motion.section variants={itemVariants} className="my-12 text-center">
-          <motion.p
-            initial={{ scale: 0.8, opacity: 0 }}
-            whileInView={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.6 }}
-            className="mb-8 text-xl font-semibold text-primary"
-          >
-            {showButton
-              ? "Lote promocional, estou liberando apenas 25 simuladores de investimento"
-              : "Continue assistindo o vídeo para liberar o botão de compra!"}
-          </motion.p>
-        </motion.section>
         {/* Buy Button Section - Aparece apenas após o tempo necessário */}
         {showButton ? (
           <motion.section
@@ -212,7 +200,7 @@ export default function PatrimonialGrowthCalculator() {
                     }}
                   >
                     <span className="block md:inline text-lg md:text-xl lg:text-2xl leading-tight">
-                      Garanta já o seu, por apenas R$47,50
+                      Garanta já o seu
                     </span>
                   </Button>
                 </motion.div>
