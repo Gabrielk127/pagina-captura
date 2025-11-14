@@ -157,7 +157,6 @@ export default function PatrimonialGrowthCalculator() {
             </div>
           </div>
         </motion.section>
-        {/* CTA Section - Aparece sempre */}
         {/* Buy Button Section - Aparece apenas após o tempo necessário */}
         {showButton ? (
           <motion.section
