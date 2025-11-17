@@ -8,12 +8,14 @@ interface YoutubeVideoProps {
   playing?: boolean;
   onTimeReached?: (reached: boolean) => void;
   requiredTimeInSeconds?: number;
+  isVertical?: boolean;
 }
 
 const VslVideo = ({
   video,
   onTimeReached,
   requiredTimeInSeconds = 60,
+  isVertical = false,
 }: YoutubeVideoProps) => {
   const [isClient, setIsClient] = useState(false);
   const [timeLeft, setTimeLeft] = useState(requiredTimeInSeconds);
@@ -48,8 +50,8 @@ const VslVideo = ({
 
   return (
     <div className="flex justify-center items-center overflow-hidden rounded-2xl p-4">
-      <div className="relative w-full max-w-[1000px]">
-        <div className="relative aspect-video rounded-xl overflow-hidden">
+      <div className={`relative w-full ${isVertical ? 'max-w-[400px]' : 'max-w-[1000px]'}`}>
+        <div className={`relative rounded-xl overflow-hidden ${isVertical ? 'aspect-[9/16]' : 'aspect-video'}`}>
           <ReactPlayer
             url={video}
             playing={isPlaying}

@@ -109,17 +109,17 @@ export default function PatrimonialGrowthCalculator() {
             transition={{ delay: 0.6, duration: 0.8 }}
             className="mb-6 text-base md:text-xl lg:text-2xl font-normal font-tt text-white"
           >
-            Assista o vídeo e aprenda a interpretar seus resultados e descubra
-            como acelerar o caminho para a sua aposentadoria dos sonhos.
+            Assista o vídeo, aprenda a interpretar seus resultados e descubra como acelerar o caminho para a sua aposentadoria dos sonhos.
           </motion.h2>
         </motion.div>
         {/* VSL Section */}
         <motion.div variants={itemVariants} className="mb-12">
           <VslVideo
-            video="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+            video="https://www.youtube.com/watch?v=WYeD4AD8nMc"
             playing={true}
             onTimeReached={handleVideoTimeReached}
-            requiredTimeInSeconds={1}
+            requiredTimeInSeconds={156}
+            isVertical={true}
           />
         </motion.div>
         {/* Benefits Section */}
