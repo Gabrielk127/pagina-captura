@@ -22,6 +22,7 @@ const VslVideo = ({
   const [formUnlocked, setFormUnlocked] = useState(false);
   const [timerStarted, setTimerStarted] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [videoEnded, setVideoEnded] = useState(false);
 
   useEffect(() => {
     setIsClient(true);
@@ -71,11 +72,16 @@ const VslVideo = ({
             style={{ borderRadius: "15px" }}
             onPlay={() => {
               setIsPlaying(true);
+              setVideoEnded(false);
               if (!timerStarted) {
                 setTimerStarted(true);
               }
             }}
             onPause={() => setIsPlaying(false)}
+            onEnded={() => {
+              setVideoEnded(true);
+              setIsPlaying(false);
+            }}
             config={{
               youtube: {
                 playerVars: {
@@ -96,6 +102,26 @@ const VslVideo = ({
           {!formUnlocked && timerStarted && (
             <div className="absolute top-4 right-4 bg-black bg-opacity-80 text-white px-4 py-2 rounded-full text-sm font-bold">
               ⏱️ {timeLeft}s {!isPlaying && "⏸️"}
+            </div>
+          )}
+
+          {/* Overlay quando o vídeo termina */}
+          {videoEnded && (
+            <div className="absolute inset-0 bg-[#273849] flex items-center justify-center">
+              <div className="text-center px-4">
+                <div className="mb-4">
+                  <span className="text-6xl">✅</span>
+                </div>
+                <h3
+                  className="text-2xl font-bold mb-2"
+                  style={{ color: "#986f31" }}
+                >
+                  Vídeo Finalizado
+                </h3>
+                <p className="text-white text-lg">
+                  Role para baixo e garanta sua oferta!
+                </p>
+              </div>
             </div>
           )}
         </div>
