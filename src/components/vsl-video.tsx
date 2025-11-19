@@ -50,14 +50,22 @@ const VslVideo = ({
 
   return (
     <div className="flex justify-center items-center overflow-hidden rounded-2xl p-4">
-      <div className={`relative w-full ${isVertical ? 'max-w-[400px]' : 'max-w-[1000px]'}`}>
-        <div className={`relative rounded-xl overflow-hidden ${isVertical ? 'aspect-[9/16]' : 'aspect-video'}`}>
+      <div
+        className={`relative w-full ${
+          isVertical ? "max-w-[400px]" : "max-w-[1000px]"
+        }`}
+      >
+        <div
+          className={`relative rounded-xl overflow-hidden ${
+            isVertical ? "aspect-[9/16]" : "aspect-video"
+          }`}
+        >
           <ReactPlayer
             url={video}
             playing={isPlaying}
             volume={1}
             muted={false}
-            controls={true}
+            controls={false}
             width="100%"
             height="100%"
             style={{ borderRadius: "15px" }}
@@ -71,10 +79,14 @@ const VslVideo = ({
             config={{
               youtube: {
                 playerVars: {
-                  rel: 0, // Desabilita vídeos relacionados
-                  modestbranding: 1, // Remove logo do YouTube
-                  showinfo: 0, // Remove informações do vídeo
-                  iv_load_policy: 3, // Desabilita anotações
+                  rel: 0,
+                  modestbranding: 1,
+                  showinfo: 0,
+                  iv_load_policy: 3,
+                  controls: 0,
+                  disablekb: 1,
+                  fs: 0,
+                  playsinline: 1,
                 },
               },
             }}
