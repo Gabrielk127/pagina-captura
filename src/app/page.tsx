@@ -218,6 +218,9 @@ export default function PatrimonialGrowthCalculator() {
             >
               <div className="p-8 rounded-lg border-2 border-dashed border-primary bg-card">
                 <div className="text-center">
+                  <div className="mb-4">
+                    <span className="text-6xl">⏳</span>
+                  </div>
                   <h3 className="text-xl font-bold mb-2 text-primary">
                     Continue assistindo o vídeo para ter acesso à oferta
                   </h3>
