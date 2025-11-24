@@ -109,7 +109,8 @@ export default function PatrimonialGrowthCalculator() {
             transition={{ delay: 0.6, duration: 0.8 }}
             className="mb-6 text-base md:text-xl lg:text-2xl font-normal font-tt text-white"
           >
-            Assista o vídeo, aprenda a interpretar seus resultados e descubra como acelerar o caminho para a sua aposentadoria dos sonhos.
+            Assista o vídeo, aprenda a interpretar seus resultados e descubra
+            como acelerar o caminho para a sua aposentadoria dos sonhos.
           </motion.h2>
         </motion.div>
         {/* VSL Section */}
@@ -217,15 +218,9 @@ export default function PatrimonialGrowthCalculator() {
             >
               <div className="p-8 rounded-lg border-2 border-dashed border-primary bg-card">
                 <div className="text-center">
-                  <div className="mb-4">
-                    <span className="text-6xl">⏳</span>
-                  </div>
                   <h3 className="text-xl font-bold mb-2 text-primary">
-                    Botão de compra será liberado em breve
-                  </h3>
-                  <p className="text-foreground">
                     Continue assistindo o vídeo para ter acesso à oferta
-                  </p>
+                  </h3>
                 </div>
               </div>
             </motion.div>
