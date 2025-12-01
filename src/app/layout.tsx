@@ -26,6 +26,7 @@ export default function RootLayout({
         className={`${playfairDisplay.variable} antialiased dark`}
         style={{ backgroundColor: "#273849", color: "#d4d3ce" }}
       >
+        {children}
         <Script
           id="fb-pixel"
           strategy="afterInteractive"
@@ -52,7 +53,6 @@ fbq('track', 'PageView');
             src="https://www.facebook.com/tr?id=9394408020682067&ev=PageView&noscript=1"
           />
         </noscript>
-        {children}
       </body>
     </html>
   );
