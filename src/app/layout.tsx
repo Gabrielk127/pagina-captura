@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import { Playfair_Display } from "next/font/google";
+import { GoogleTagManager } from "@next/third-parties/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 
 const playfairDisplay = Playfair_Display({
@@ -22,6 +24,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br" className="dark">
+      <GoogleTagManager gtmId="GTM-NK9MG7H7" />
       <body
         className={`${playfairDisplay.variable} antialiased dark`}
         style={{ backgroundColor: "#273849", color: "#d4d3ce" }}
@@ -53,6 +56,7 @@ fbq('track', 'PageView');
             src="https://www.facebook.com/tr?id=9394408020682067&ev=PageView&noscript=1"
           />
         </noscript>
+        <GoogleAnalytics gaId="G-TKRV593R0T" />
       </body>
     </html>
   );
