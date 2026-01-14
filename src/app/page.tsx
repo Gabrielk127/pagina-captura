@@ -1,281 +1,315 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import VslVideo from "@/components/vsl-video";
+import { useState } from "react";
+import Image from "next/image";
+import Whatsapp from "@/lib/Whatsapp/Whatsapp";
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      delayChildren: 0.3,
-      staggerChildren: 0.2,
-    },
-  },
-};
+export default function LandingPage() {
+  const [isMuted, setIsMuted] = useState(true);
 
-const itemVariants = {
-  hidden: { y: 50, opacity: 0 },
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.6,
-      ease: "easeOut" as const,
-    },
-  },
-};
-
-export default function PatrimonialGrowthCalculator() {
-  const [showButton, setShowButton] = useState(false);
-  const [isClient, setIsClient] = useState(false);
-
-  const handleVideoTimeReached = (reached: boolean) => {
-    console.log("Video time reached:", reached);
-    setShowButton(reached);
+  const handleUnmute = () => {
+    setIsMuted(false);
   };
 
-  const handleBuyClick = () => {
-    window.open(
-      "https://pay.hotmart.com/D102466966L?bid=1762361748801",
-      "_blank"
-    );
+  const fadeInUp = {
+    initial: { opacity: 0, y: 40 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] },
   };
 
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
+  const staggerContainer = {
+    animate: {
+      transition: {
+        staggerChildren: 0.12,
+      },
+    },
+  };
 
-  if (!isClient) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-background">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mb-4 mx-auto"></div>
-          <p className="text-foreground">Carregando...</p>
-        </div>
-      </div>
-    );
-  }
+  const pulseAnimation = {
+    scale: [1, 1.02, 1],
+  };
+
+  const pulseTransition = {
+    duration: 2,
+    repeat: Number.POSITIVE_INFINITY,
+    ease: "easeInOut" as const,
+  };
 
   return (
-    <div className="min-h-screen bg-background">
-      {/* Logo no canto superior esquerdo */}
-      <motion.div
-        initial={{ x: -50, opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        className="absolute top-4 left-4 md:top-6 md:left-6 lg:top-8 lg:left-8 z-10"
-      >
-        <img
-          src="/logo.png"
-          alt="AX Mercado Real Logo"
-          className="h-12 md:h-16 lg:h-20 w-auto"
-        />
-      </motion.div>
-
-      <motion.main
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-        className="container mx-auto px-4 py-8 md:px-6 lg:py-12"
-      >
-        {/* Main headline */}
+    <div className="min-h-screen bg-[#101418]">
+      <Whatsapp />
+      <header className="container mx-auto px-4 py-4 md:py-6">
         <motion.div
-          variants={itemVariants}
-          className="mb-8 text-center md:mb-12"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
         >
-          <motion.h1
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 1, ease: "easeOut" }}
-            className="mb-4 text-2xl font-normal tracking-tight md:text-4xl lg:text-5xl text-foreground font-playfair"
-          >
-            <motion.span
-              initial={{ x: -100, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ delay: 0.3, duration: 0.8 }}
-              className="block mb-2 underline decoration-white decoration-2 font-light underline-offset-4"
-            >
-              AX MERCADO REAL
-            </motion.span>
-          </motion.h1>
-
-          {/* Headline */}
-          <motion.h2
-            initial={{ y: 50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.6, duration: 0.8 }}
-            className="mb-6 text-base md:text-xl lg:text-2xl font-normal font-tt text-white"
-          >
-            Assista o vídeo, aprenda a interpretar seus resultados e descubra
-            como acelerar o caminho para a sua aposentadoria dos sonhos.
-          </motion.h2>
-        </motion.div>
-        {/* VSL Section */}
-        <motion.div variants={itemVariants} className="mb-12">
-          <VslVideo
-            video="https://www.youtube.com/watch?v=WYeD4AD8nMc"
-            playing={true}
-            onTimeReached={handleVideoTimeReached}
-            requiredTimeInSeconds={156}
-            isVertical={true}
+          <Image
+            src="/images/axlogo.png"
+            alt="AX Logo"
+            width={60}
+            height={60}
+            className="w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16"
           />
         </motion.div>
-        {/* Benefits Section */}
-        <motion.section variants={itemVariants} className="my-12">
-          <motion.h3
-            initial={{ scale: 0.8, opacity: 0 }}
-            whileInView={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.6 }}
-            className="mb-6 text-center text-xl md:text-2xl font-bold text-primary"
-          >
-            Ao adquirir o simulador você receberá:
-          </motion.h3>
+      </header>
 
-          <div className="mx-auto max-w-4xl">
-            <div className="grid gap-6 md:grid-cols-2">
-              {[
-                "Simulador  de Investimentos Patrimonial exclusivo e personalizado.",
-                "Projeção real de valorização patrimonial.",
-                "Planilha inteligente para construir os seus ativos patrimoniais",
-                "45 minutos de consultoria gratuita para tirar suas dúvidas.",
-              ].map((benefit, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ x: -50, opacity: 0 }}
-                  whileInView={{ x: 0, opacity: 1 }}
-                  transition={{ delay: index * 0.1, duration: 0.6 }}
-                  className="flex items-start space-x-3"
-                >
-                  <div className="flex-shrink-0">
-                    <span className="text-xl text-green-500">✅</span>
-                  </div>
-                  <p className="text-lg text-foreground">{benefit}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </motion.section>
-        {/* Buy Button Section - Aparece apenas após o tempo necessário */}
-        {showButton ? (
-          <motion.section
-            variants={itemVariants}
-            className="my-12"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+      {/* Hero Section */}
+      <section className="container mx-auto px-4 py-8 md:py-12 lg:py-16">
+        <motion.div
+          variants={staggerContainer}
+          initial="initial"
+          animate="animate"
+          className="max-w-6xl mx-auto text-center space-y-6"
+        >
+          <motion.h1
+            variants={fadeInUp}
+            className="text-xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-balance leading-tight text-white"
           >
-            <div className="mx-auto max-w-2xl text-center">
+            Tenha <span className="text-[#7CEB63]">clareza</span> sobre seus
+            números e conquiste sua{" "}
+            <span className="text-[#7CEB63]">liberdade</span> financeira e
+            patrimonial.
+          </motion.h1>
+
+          <motion.h2
+            variants={fadeInUp}
+            className="text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-white"
+          >
+            O <span className="text-[#7CEB63]">próximo nível</span> da sua vida
+            financeira.
+          </motion.h2>
+        </motion.div>
+      </section>
+
+      {/* Video Section */}
+      <section className="container mx-auto px-4 py-6 md:py-10">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="max-w-4xl mx-auto"
+        >
+          <div className="relative aspect-video rounded-lg overflow-hidden shadow-2xl bg-black border-2 border-gray-700 group">
+            <iframe
+              key={isMuted ? "muted" : "unmuted"}
+              id="youtube-player"
+              width="100%"
+              height="100%"
+              src={`https://www.youtube.com/embed/8cKwjJqB5p0?autoplay=1${
+                isMuted ? "&mute=1" : ""
+              }&enablejsapi=1`}
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+              className="w-full h-full"
+            ></iframe>
+
+            {isMuted && (
               <motion.div
-                initial={{ y: 50, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.2, duration: 0.6 }}
-                className="pt-4"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.3 }}
+                onClick={handleUnmute}
+                className="absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer hover:bg-black/30 transition-colors rounded-lg"
               >
                 <motion.div
+                  initial={{ scale: 0.9, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ delay: 0.2, duration: 0.4 }}
                   whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  animate={{
-                    boxShadow: [
-                      "0 0 0 0 rgba(34, 197, 94, 0)",
-                      "0 0 0 10px rgba(34, 197, 94, 0.1)",
-                      "0 0 0 20px rgba(34, 197, 94, 0)",
-                    ],
-                  }}
-                  transition={{
-                    boxShadow: { repeat: Infinity, duration: 2 },
-                  }}
+                  className="bg-white rounded-lg px-6 md:px-10 py-4 md:py-6 text-center shadow-lg"
                 >
-                  <Button
-                    onClick={handleBuyClick}
-                    size="lg"
-                    data-buy-button
-                    className="cursor-pointer w-full py-6 text-base md:text-lg lg:text-2xl font-bold border-2 border-green-600 bg-green-500 text-white hover:bg-green-600 hover:scale-105 transition-all whitespace-normal break-words"
-                    style={{
-                      lineHeight: 1.2,
-                      padding: "1.5rem 1rem",
-                      wordBreak: "break-word",
-                    }}
-                  >
-                    <span className="block md:inline text-lg md:text-xl lg:text-2xl leading-tight">
-                      Garanta já o seu
-                    </span>
-                  </Button>
+                  <p className="text-gray-800 font-semibold text-sm md:text-base">
+                    🔇 Vídeo está mutado
+                  </p>
+                  <p className="text-gray-600 text-xs md:text-sm mt-2">
+                    Clique aqui para desmutar
+                  </p>
                 </motion.div>
               </motion.div>
-            </div>
-          </motion.section>
-        ) : (
-          // Placeholder quando o botão não está disponível
-          <motion.section variants={itemVariants} className="my-12 text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="mx-auto max-w-2xl"
+            )}
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="mt-8 text-center"
+          >
+            <motion.button
+              animate={pulseAnimation}
+              transition={pulseTransition}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+              className="bg-[#7CEB63] hover:bg-[#6ad854] text-[#101418] font-bold text-base md:text-lg lg:text-xl px-8 md:px-12 py-4 md:py-5 rounded-lg shadow-lg shadow-[#7CEB63]/30 transition-colors cursor-pointer"
             >
-              <div className="p-8 rounded-lg border-2 border-dashed border-primary bg-card">
-                <div className="text-center">
-                  <div className="mb-4">
-                    <span className="text-6xl">⏳</span>
-                  </div>
-                  <h3 className="text-xl font-bold mb-2 text-primary">
-                    Continue assistindo o vídeo para ter acesso à oferta
-                  </h3>
+              QUERO COMEÇAR AGORA
+            </motion.button>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Professor Section - Removed companies section, made image rectangular and larger */}
+      <section className="container mx-auto px-4 py-12 md:py-16 lg:py-20">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="max-w-6xl mx-auto"
+        >
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-xl md:text-2xl lg:text-3xl font-bold text-white text-center mb-8 md:mb-12"
+          >
+            Conheça Quem Vai Te Guiar
+          </motion.h2>
+
+          <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+            {/* Photo - Made rectangular and larger */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+              className="shrink-0"
+            >
+              <div className="relative">
+                <div className="w-64 h-80 md:w-72 md:h-96 lg:w-80 lg:h-112 rounded-xl overflow-hidden border-4 border-[#7CEB63] shadow-xl shadow-[#7CEB63]/20">
+                  <Image
+                    src="/images/Alexandre.jpg"
+                    alt="Dr. Frederico Porto"
+                    width={320}
+                    height={448}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
               </div>
             </motion.div>
-          </motion.section>
-        )}
-        {/* Final reinforcement - Aparece apenas quando o botão está disponível */}
-        {showButton && (
-          <motion.section variants={itemVariants} className="my-12 text-center">
+
+            {/* Info */}
             <motion.div
-              initial={{ y: 50, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.8 }}
-              className="mx-auto max-w-4xl"
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="text-center md:text-left"
             >
-              <div className="p-8 rounded-lg border-2 border-primary bg-card shadow-2xl">
-                <p className="text-lg leading-relaxed text-foreground mb-4">
-                  <strong className="text-primary">OFERTA EXCLUSIVA:</strong>{" "}
-                  Além da calculadora completa, você receberá 45 minutos de
-                  consultoria gratuita com nossos especialistas para entender
-                  como aplicar as estratégias no seu caso específico.
-                </p>
-                <p className="text-base text-foreground">
-                  Essa é a mesma ferramenta que usamos para orientar
-                  investidores que já construíram patrimônio sólido. Garanta a
-                  sua agora e comece a planejar seu crescimento financeiro com
-                  suporte profissional.
-                </p>
-              </div>
+              <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-2">
+                Alexandre Lourenço
+              </h3>
+              <p className="text-gray-400 text-sm md:text-base mb-4">
+                Estrategista Patrimonial
+              </p>
+              <p className="text-gray-300 text-sm md:text-base leading-relaxed mb-4">
+                Sei que investir vai muito além de buscar rentabilidade:
+                trata-se de planejar o futuro com inteligência. Minha missão é
+                transformar recursos em{" "}
+                <span className="text-[#7CEB63] font-semibold">
+                  patrimônio real
+                </span>
+                , gerando tranquilidade financeira por meio de decisões
+                consistentes.
+              </p>
+              <p className="text-gray-300 text-sm md:text-base leading-relaxed mb-4">
+                Com atuação voltada à construção de valor financeiro de longo
+                prazo, uno estratégia, segurança e previsibilidade.
+              </p>
+              <p className="text-gray-300 text-sm md:text-base leading-relaxed">
+                Ao longo de seus mais de{" "}
+                <span className="text-[#7CEB63] font-semibold">
+                  12 anos de carreira
+                </span>
+                , tenho compartilhando conhecimento e expertise em estratégia
+                Patrimonial. Movido pelo propósito de{" "}
+                <span className="text-[#7CEB63] font-semibold">
+                  gerar prosperidade sustentável
+                </span>
+                , ajudando investidores e empresários a evoluírem
+                financeiramente.
+              </p>
             </motion.div>
-          </motion.section>
-        )}
-      </motion.main>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="mt-10 md:mt-12 text-center"
+          >
+            <motion.button
+              animate={pulseAnimation}
+              transition={pulseTransition}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+              className="bg-[#7CEB63] hover:bg-[#6ad854] text-[#101418] font-bold text-base md:text-lg lg:text-xl px-8 md:px-12 py-4 md:py-5 rounded-lg shadow-lg shadow-[#7CEB63]/30 transition-colors cursor-pointer"
+            >
+              GARANTIR MINHA VAGA
+            </motion.button>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Final Text Section */}
+      <section className="container mx-auto px-4 py-8 md:py-12">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="max-w-3xl mx-auto text-center"
+        >
+          <p className="text-gray-300 text-sm md:text-base leading-relaxed">
+            Sob minha orientação, você encontrará uma abordagem estratégica e
+            completa para potencializar seu patrimônio, com foco no equilíbrio
+            entre rentabilidade, segurança e prosperidade sustentável.
+          </p>
+        </motion.div>
+      </section>
 
       {/* Footer */}
-      <motion.footer
-        initial={{ y: 100, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        className="py-6 text-center border-t-2 border-primary bg-background text-foreground"
-      >
-        <div className="container mx-auto px-4">
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ delay: 0.3 }}
-            className="mb-2"
-          >
-            © {new Date().getFullYear()} Calculadora de Crescimento Patrimonial.
-            Todos os direitos reservados.
-          </motion.p>
-        </div>
-      </motion.footer>
+      <footer className="container mx-auto px-4 py-8 md:py-12 border-t border-gray-800">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="flex flex-col md:flex-row items-center md:items-start justify-between gap-6"
+        >
+          <div className="flex items-center">
+            <Image
+              src="/images/axlogo.png"
+              alt="AX Logo"
+              width={48}
+              height={48}
+              className="w-10 h-10 md:w-12 md:h-12 opacity-70"
+            />
+          </div>
+
+          <div className="text-center md:text-right">
+            <p className="text-gray-500 text-xs md:text-sm">
+              © 2026 Calculadora de Crescimento Patrimonial. Todos os direitos
+              reservados.
+            </p>
+            {/* <p className="text-gray-500 text-xs md:text-sm mt-1">
+              Integração Humana e Treinamento Eirelli
+            </p>
+            <p className="text-gray-500 text-xs mt-1">
+              CNPJ 07.251.906/0001-28
+            </p> */}
+          </div>
+        </motion.div>
+      </footer>
     </div>
   );
 }
